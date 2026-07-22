@@ -1,0 +1,6 @@
+{
+  "_note": "Per-1M-token USD. Post-cutoff + volatile — re-verify at publish. Fable cost is normally taken REAL from `claude -p` JSON; these back the Kimi ESTIMATE and a Fable fallback only.",
+  "_verified": "2026-07-20",
+  "claude-fable-5": { "inputPerM": 5.0, "outputPerM": 25.0 },
+  "kimi-for-coding": { "inputPerM": 1.5, "outputPerM": 8.0 }
+}

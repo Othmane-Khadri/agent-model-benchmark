@@ -1,0 +1,3 @@
+{ "id": "tool-use-cmd", "category": "tool-use",
+  "prompt": "A user wants to list all files under ./src ending in .ts recursively. Give ONLY the single shell command, no prose.",
+  "assert": { "type": "regex", "value": "find|ls|rg|grep" } }

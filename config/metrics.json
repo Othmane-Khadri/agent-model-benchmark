@@ -1,0 +1,7 @@
+{
+  "quality": true,
+  "latency": true,
+  "cost": true,
+  "outcome": true,
+  "verbosity": true
+}

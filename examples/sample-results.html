@@ -1,0 +1,88 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Agent Model Benchmark — Fable 5 vs Kimi K3</title>
+<style>body{font-family:ui-sans-serif,system-ui,sans-serif;max-width:1000px;margin:2rem auto;padding:0 1rem;color:#111}h1{font-size:1.4rem}.verdict{background:#faf5ff;border:1px solid #e9d5ff;border-radius:12px;padding:1rem;margin:1rem 0}.totals{display:flex;gap:1.5rem;flex-wrap:wrap;margin:1rem 0;font-size:.9rem}.totals div{background:#fafafa;border:1px solid #eee;border-radius:8px;padding:.5rem .8rem}table{border-collapse:collapse;width:100%;font-size:.85rem}th,td{border:1px solid #eee;padding:.45rem;text-align:left;vertical-align:top}th{background:#fafafa}em{color:#888}.legend{color:#666;font-size:.8rem;margin-top:1rem}</style></head>
+<body><h1>Fable 5 vs Kimi K3 — your own agent</h1>
+<div class="verdict">Fable 5 won 5/9, Kimi K3 won 2/9; Kimi K3 cheaper by ~97% on our estimate (Kimi cost estimated, excludes reasoning tokens) (2 tied, 2 errored).</div>
+<div class="totals"><div><strong>Total cost</strong><br>Fable 5 $1.6858 · Kimi K3 $0.0465 (est.)</div>
+<div><strong>Avg latency</strong><br>Fable 14332ms · Kimi 36569ms</div></div>
+<table><thead><tr><th>Task</th><th>Category</th><th>Winner</th><th>Quality (F/K)</th><th>Latency (F/K)</th><th>Cost (F/K)</th><th>Outcome (F/K)</th><th>Why</th></tr></thead><tbody>
+    <tr><td>your-skill-buying-committee-mapper</td><td>your-skill</td>
+    <td>fable</td>
+    <td>9 / 8</td>
+    <td>52257ms / 101385.112917ms</td>
+    <td>$0.3840 / $0.0243 <em>(kimi est.)</em></td>
+    <td>na / na</td>
+    <td>Both deliver complete five-role committees with persona messages, Notion maps, and DRAFT campaigns, but B better reflects the actual tool/agency context (real MCP tools like Fullenrich, GDPR handling, catch-all email caveats, verification realism) and is tighter, edging out A's solid but more generic execution.</td></tr>
+    <tr><td>your-skill-icp-import</td><td>your-skill</td>
+    <td>-</td>
+    <td>- / -</td>
+    <td>-ms / -ms</td>
+    <td>$0.0000 / $0.0000 <em>(kimi est.)</em></td>
+    <td>- / -</td>
+    <td><strong>errored (excluded):</strong> runner: &quot;kimi&quot; produced no output (exit -1). Is the kimi CLI installed (~/.kimi-code/bin) and logged in? stderr: • User wants me to complete a task once, on a realistic example input that I invent. Return only the finished deliverable — no preamble, no explanation, and do not look for files or tools.
+
+  So I should not use tools, not look for files. I need to invent a realistic Notion ICP doc content, then tra</td></tr>
+    <tr><td>your-skill-personalize-message</td><td>your-skill</td>
+    <td>fable</td>
+    <td>9 / 7</td>
+    <td>15616ms / 36046.542167ms</td>
+    <td>$0.1621 / $0.0030 <em>(kimi est.)</em></td>
+    <td>na / na</td>
+    <td>Both are well-crafted, on-template messages, but B integrates signals more tightly, adds a smarter region-context insight and a lower-friction opt-out ask, while A is strong yet slightly more generic.</td></tr>
+    <tr><td>your-skill-research-prospect</td><td>your-skill</td>
+    <td>fable</td>
+    <td>9 / 6</td>
+    <td>35366ms / 80028.574083ms</td>
+    <td>$0.2319 / $0.0080 <em>(kimi est.)</em></td>
+    <td>na / na</td>
+    <td>Answer A presents unverifiable specific real-company data as if scraped when it was instructed to invent an example, risking fabricated claims about a real prospect, whereas B invents a fictional prospect (appropriate for the invent-an-input task), delivers a richer brief with intent signals, sourcing notes, and a transparent fiction disclaimer.</td></tr>
+    <tr><td>your-skill-run-competitive-intel</td><td>your-skill</td>
+    <td>fable</td>
+    <td>9 / 6</td>
+    <td>34545ms / 115820.284833ms</td>
+    <td>$0.2334 / $0.0088 <em>(kimi est.)</em></td>
+    <td>na / na</td>
+    <td>Both are strong competitive briefs, but B follows the task more faithfully by simulating the actual CLI invocation/output, dating every data point, and grounding changes/customer-stories in specific recent signals, whereas A omits the CLI framing and uses vaguer, undated intel.</td></tr>
+    <tr><td>code-merge-intervals</td><td>coding</td>
+    <td>tie</td>
+    <td>8 / 8</td>
+    <td>4903ms / 24627.03375ms</td>
+    <td>$0.1402 / $0.0016 <em>(kimi est.)</em></td>
+    <td>pass / pass</td>
+    <td>Both implement the correct sort-then-merge algorithm identically in behavior; A adds docstrings while B is more concise, but the prompt asked for only code in a fenced block, so neither is clearly superior.</td></tr>
+    <tr><td>code-bugfix-factorial</td><td>coding</td>
+    <td>fable</td>
+    <td>9 / 8</td>
+    <td>5728ms / 6265.652459ms</td>
+    <td>$0.1429 / $0.0003 <em>(kimi est.)</em></td>
+    <td>pass / pass</td>
+    <td>Both fix the bug correctly, but B has clean indentation and a correct explanation while A's code carries spurious leading indentation that would make it invalid as pasted.</td></tr>
+    <tr><td>reasoning-trains</td><td>reasoning</td>
+    <td>tie</td>
+    <td>10 / 10</td>
+    <td>2864ms / 9363.632333ms</td>
+    <td>$0.1297 / $0.0001 <em>(kimi est.)</em></td>
+    <td>pass / pass</td>
+    <td>Both give the correct answer (10:30) in the requested HH:MM format, since the first train has a 30 km head start closed at 30 km/h relative speed in exactly one hour.</td></tr>
+    <tr><td>sql-top-customers</td><td>coding</td>
+    <td>-</td>
+    <td>- / -</td>
+    <td>-ms / -ms</td>
+    <td>$0.0000 / $0.0000 <em>(kimi est.)</em></td>
+    <td>- / -</td>
+    <td><strong>errored (excluded):</strong> Invalid regular expression: /(?i)select/: Invalid group</td></tr>
+    <tr><td>regex-us-phone</td><td>coding</td>
+    <td>kimi</td>
+    <td>8 / 10</td>
+    <td>2494ms / 23508.284ms</td>
+    <td>$0.1306 / $0.0001 <em>(kimi est.)</em></td>
+    <td>pass / pass</td>
+    <td>Both regexes are identical and correct, but the task said return only the regex and B wrapped it in backticks whereas A returned it cleanly.</td></tr>
+    <tr><td>json-strict-company</td><td>extraction</td>
+    <td>kimi</td>
+    <td>8 / 9</td>
+    <td>3878ms / 5211.377792ms</td>
+    <td>$0.1309 / $0.0003 <em>(kimi est.)</em></td>
+    <td>pass / pass</td>
+    <td>Both are valid minified JSON matching the schema exactly, but B's more specific, differentiated tags better capture a plausible B2B SaaS identity than A's generic ones.</td></tr></tbody></table>
+<p class="legend">F = Fable 5 (<code>claude-fable-5</code>), K = Kimi K3 (<code>kimi-k3</code> / <code>kimi-for-coding</code>). Fable cost measured from the Claude CLI; <strong>Kimi cost is estimated</strong>, never measured.</p>
+</body></html>

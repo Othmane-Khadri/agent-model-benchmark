@@ -1,0 +1,5 @@
+{
+  "fable": { "cli": "claude", "model": "claude-fable-5", "outputFormat": "json" },
+  "kimi": { "cli": "kimi", "modelLabel": "kimi-k3" },
+  "judge": { "model": "claude-opus-4-8" }
+}

@@ -1,0 +1,3 @@
+{ "id": "long-context-recall", "category": "long-context",
+  "prompt": "Here is a note: 'The launch code is TIGER-7742 and the fallback is OWL-3310.' Ignore everything else. Question: what is the fallback code? Answer with only the code.",
+  "assert": { "type": "contains", "value": "OWL-3310" } }

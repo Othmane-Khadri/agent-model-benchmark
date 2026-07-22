@@ -1,0 +1,3 @@
+{ "id": "extraction-json", "category": "extraction",
+  "prompt": "From this line extract the email and return ONLY compact JSON {\"email\":\"...\"}: Contact us at sales@acme.io for a demo.",
+  "assert": { "type": "contains", "value": "sales@acme.io" } }
