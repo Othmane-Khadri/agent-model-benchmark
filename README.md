@@ -1,4 +1,4 @@
-# Agent Model Benchmark
+# Kimi K3 vs Fable 5 Benchmark
 
 Is the cheap model good enough for *your* work? This kit runs Fable 5 and Kimi K3 on your own Claude Code skills and scores them head to head. No new API key beyond what you already use.
 
