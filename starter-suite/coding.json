@@ -1,3 +1,0 @@
-{ "id": "coding-fizzbuzz", "category": "coding",
-  "prompt": "Write a Python function fizzbuzz(n) that returns a list of strings for 1..n with the classic FizzBuzz rules. Return only the code in a fenced block.",
-  "assert": { "type": "contains", "value": "def fizzbuzz" } }

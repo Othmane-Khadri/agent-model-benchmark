@@ -1,14 +1,17 @@
 {
   "name": "agent-model-benchmark",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "Benchmark Kimi K3 vs Fable 5 on your own Claude Code skills.",
-  "scripts": {
-    "bench": "node scripts/run.mjs",
-    "test": "node --test \"scripts/test/**/*.test.mjs\"",
-    "typecheck": "tsc --noEmit -p tsconfig.json"
+  "engines": {
+    "node": ">=18"
   },
-  "engines": { "node": ">=18" },
-  "devDependencies": { "typescript": "^5.6.0" }
+  "scripts": {
+    "test": "node --test",
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.1",
+    "typescript": "^5.6.0"
+  }
 }

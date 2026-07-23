@@ -1,0 +1,10 @@
+{
+  "tasks": [
+    {
+      "id": "smoke-json-extract",
+      "category": "extraction",
+      "prompt": "Extract the year as a 4-digit number from this sentence and reply with ONLY that number: 'Our company was founded in 2019 in Berlin.'",
+      "check": { "type": "contains", "value": "2019" }
+    }
+  ]
+}

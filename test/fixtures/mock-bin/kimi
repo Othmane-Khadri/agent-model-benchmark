@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+// test/fixtures/mock-bin/kimi
+import { readFileSync } from 'node:fs';
+const argv = process.argv.slice(2);
+let prompt = argv[argv.length - 1] || '';
+try { const s = readFileSync(0, 'utf8'); if (s) prompt = s; } catch {}
+const isJudge = prompt.includes('"winner"') || prompt.includes('ANSWER A');
+if (isJudge) {
+  let w = process.env.MOCK_JUDGE_WINNER_KIMI || process.env.MOCK_JUDGE_WINNER || 'a';
+  const winnerText = process.env.MOCK_JUDGE_WINNER_TEXT;
+  if (winnerText) {
+    // Split prompt into A/B blocks and detect which block contains the winner text
+    const sepA = '--- ANSWER A ---', sepB = '--- ANSWER B ---';
+    const idxA = prompt.indexOf(sepA), idxB = prompt.indexOf(sepB);
+    if (idxA !== -1 && idxB !== -1) {
+      const blockA = prompt.slice(idxA + sepA.length, idxB);
+      const blockB = prompt.slice(idxB + sepB.length);
+      w = blockA.includes(winnerText) ? 'a' : blockB.includes(winnerText) ? 'b' : w;
+    }
+  }
+  process.stdout.write(JSON.stringify({
+    output_a: { criteria: { quality: { reason: 'mock', score: w === 'a' ? 5 : 3 } }, overall: w === 'a' ? 5 : 3 },
+    output_b: { criteria: { quality: { reason: 'mock', score: w === 'b' ? 5 : 3 } }, overall: w === 'b' ? 5 : 3 },
+    winner: w }));
+  process.exit(0);
+}
+process.stdout.write(process.env.MOCK_KIMI_OUTPUT || '2019');

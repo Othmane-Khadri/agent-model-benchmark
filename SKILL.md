@@ -1,20 +1,16 @@
 ---
 name: agent-model-benchmark
-description: Benchmark two coding models on your OWN Claude Code skills and pick the cheaper-good-enough one. Use when the user says "benchmark Kimi vs Fable", "which model is better for my agent", "is Kimi K3 good enough", "compare claude-fable-5 and kimi-for-coding on my skills", "run the model benchmark", or "should I switch to the cheaper model". Runs both models headless via their own CLIs (no new API key), blind-judges the outputs with Opus, and reports quality, latency, real Fable cost, and an estimated Kimi cost per task. Read-only benchmark; never sends anything.
-version: 1.0.0
+description: Benchmark two agent models (claude-fable-5 vs kimi-k3) on your own tasks with 2026-valid methodology — trials, dual-order + dual-family judging, errors-as-failures, bootstrap CIs, honest TIE — and emit a model-routing.json + paste-ready CLAUDE.md snippet that routes each task category to the right model. Use when the user says "benchmark the models", "which model for which task", "fable vs kimi", "should I route X to kimi", or "re-run the model benchmark".
 ---
 
-# Agent Model Benchmark
+# agent-model-benchmark v2
 
-Run Fable 5 (`claude-fable-5`) and Kimi K3 (`kimi-k3` / `kimi-for-coding`) on the same tasks, from your own skills, and see who wins on quality, speed, and cost.
+Honest mode (default): `node scripts/run.mjs --trials 3 --judges dual`
+Smoke test (not a verdict): `node scripts/run.mjs --trials 1 --judges single`
+Preview cost: `node scripts/run.mjs --dry-run`
 
-## Quickstart
-1. Read `SETUP.md` once to point Claude Code at Kimi.
-2. From the kit: `node scripts/run.mjs` (add `--dry-run` to preview tasks, `--skills-dir <path>` to target a repo's skills).
-3. Open `results.html` for the verdict.
+Outputs land in `runs/<run-id>/`: `results.json` (schema 2), `results.html`, `model-routing.json`, `routing-snippet.md`, and per-task transcripts.
 
-## What it measures
-Quality (blind Opus judge, 1 to 10 plus reason), latency (both real), cost (Fable measured, Kimi estimated and always labeled), outcome pass/fail on checkable tasks, and verbosity.
+Paste `routing-snippet.md` into a CLAUDE.md to make an agent route by category. Re-benchmark monthly.
 
-## Honesty rules
-Kimi cost is an estimate from plan-credit pricing, never a measured number. Model ids and prices live in `config/`. No key value is ever printed.
+See README.md for the methodology and SETUP.md for prerequisites.

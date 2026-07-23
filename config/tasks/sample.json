@@ -1,0 +1,10 @@
+{
+  "tasks": [
+    { "id": "extract-year", "category": "extraction", "prompt": "Reply with ONLY the 4-digit founding year: 'Acme was founded in 2011.'", "check": { "type": "contains", "value": "2011" } },
+    { "id": "code-fizzbuzz", "category": "coding", "prompt": "Write a Python function fizzbuzz(n) returning a list for 1..n. Reply with code only.", "check": { "type": "contains", "value": "def fizzbuzz" } },
+    { "id": "reason-parity", "category": "reasoning", "prompt": "Is 4,611,686 even or odd? Reply with one word.", "check": { "type": "regex", "value": "(?i)even" } },
+    { "id": "write-subject", "category": "writing", "prompt": "Write a 6-word cold-email subject line for a GTM automation tool.", "check": { "type": "none" } },
+    { "id": "research-brief", "category": "research", "prompt": "In 3 bullets, what is Generative Engine Optimization (GEO)?", "check": { "type": "none" } },
+    { "id": "tool-plan", "category": "tool-use", "prompt": "List the exact shell command to count lines in file.txt.", "check": { "type": "contains", "value": "wc -l" } }
+  ]
+}

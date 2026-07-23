@@ -1,5 +1,21 @@
 {
-  "fable": { "cli": "claude", "model": "claude-fable-5", "outputFormat": "json" },
-  "kimi": { "cli": "kimi", "modelLabel": "kimi-k3" },
-  "judge": { "model": "claude-opus-4-8" }
+  "default_model": "claude-fable-5",
+  "models": {
+    "claude-fable-5": {
+      "bin": "claude",
+      "args": ["-p", "--model", "claude-fable-5", "--output-format", "json"],
+      "prompt_via": "stdin",
+      "parse": "claude-json"
+    },
+    "kimi-k3": {
+      "bin": "kimi",
+      "args": ["-p"],
+      "prompt_via": "arg",
+      "parse": "text"
+    }
+  },
+  "judges": {
+    "claude": { "bin": "claude", "args": ["-p", "--model", "claude-opus-4-8", "--output-format", "json"], "prompt_via": "stdin", "parse": "claude-json", "family": "claude" },
+    "kimi": { "bin": "kimi", "args": ["-p"], "prompt_via": "arg", "parse": "text", "family": "kimi" }
+  }
 }

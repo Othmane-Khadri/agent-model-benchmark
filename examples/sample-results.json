@@ -1,373 +1,1303 @@
 {
-  "meta": {
-    "generatedAt": null,
-    "generatedBy": "agent-model-benchmark",
-    "taskCount": 11
+  "schema": 2,
+  "run_id": "20260723123023-1234",
+  "seed": 1234,
+  "trials": 2,
+  "judges_mode": "dual",
+  "default_model": "claude-fable-5",
+  "challenger": "kimi-k3",
+  "duration_ms": 2068,
+  "headline": "TIE — no statistically meaningful winner on n=6 tasks",
+  "win_rate": 0.5,
+  "win_rate_ci": {
+    "point": 0.5,
+    "lo": 0.5,
+    "hi": 0.5
   },
-  "headline": "Fable 5 won 5/9, Kimi K3 won 2/9; Kimi K3 cheaper by ~97% on our estimate (Kimi cost estimated, excludes reasoning tokens) (2 tied, 2 errored).",
+  "quality_delta_ci": {
+    "point": 0,
+    "lo": 0,
+    "hi": 0
+  },
+  "agreement_rate": 0,
+  "length_flag": {
+    "flag": false,
+    "ratio": null
+  },
+  "length_by_model": {
+    "claude-fable-5": 111,
+    "kimi-k3": 108
+  },
+  "latency": {
+    "claude-fable-5": {
+      "median": 27.5,
+      "p95": 34.45
+    },
+    "kimi-k3": {
+      "median": 27.5,
+      "p95": 32.599999999999994
+    }
+  },
+  "cost": {
+    "claude-fable-5": {
+      "total_usd": 0.001008,
+      "solved_tasks": 5,
+      "cost_per_solved_usd": 0.0002016,
+      "estimated": false
+    },
+    "kimi-k3": {
+      "total_usd": 0.0008099999999999998,
+      "solved_tasks": 5,
+      "cost_per_solved_usd": 0.00016199999999999998,
+      "estimated": true
+    }
+  },
+  "cost_basis": {
+    "as_of": "2026-07-23",
+    "sources": {
+      "claude-fable-5": {
+        "basis": "published Anthropic pricing 2026-07",
+        "estimated": false
+      },
+      "kimi-k3": {
+        "basis": "kimi estimated — membership plan, no per-token invoice",
+        "estimated": true
+      }
+    }
+  },
   "tasks": [
     {
-      "taskId": "your-skill-buying-committee-mapper",
-      "quality": {
-        "winner": "fable",
-        "scoreFable": 9,
-        "scoreKimi": 8,
-        "rationale": "Both deliver complete five-role committees with persona messages, Notion maps, and DRAFT campaigns, but B better reflects the actual tool/agency context (real MCP tools like Fullenrich, GDPR handling, catch-all email caveats, verification realism) and is tighter, edging out A's solid but more generic execution."
-      },
-      "latency": {
-        "fable": 52257,
-        "kimi": 101385.112917
-      },
-      "cost": {
-        "fable": {
-          "value": 0.38398699999999997,
-          "estimated": false
+      "id": "extract-year",
+      "category": "extraction",
+      "flip_rate": 1,
+      "pass_at_k": 1,
+      "pass_hat_k": 1,
+      "trials": [
+        {
+          "model": "claude-fable-5",
+          "trial": 0,
+          "latencyMs": 28,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
         },
-        "kimi": {
-          "value": 0.024340999999999998,
-          "estimated": true
-        }
-      },
-      "outcome": {
-        "fable": "na",
-        "kimi": "na"
-      },
-      "verbosity": {
-        "fable": {
-          "chars": 6278,
-          "words": 1030
+        {
+          "model": "claude-fable-5",
+          "trial": 1,
+          "latencyMs": 35,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
         },
-        "kimi": {
-          "chars": 12088,
-          "words": 1910
+        {
+          "model": "kimi-k3",
+          "trial": 0,
+          "latencyMs": 26,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 1,
+          "latencyMs": 29,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
         }
-      },
-      "prompt": "Complete the following task once, on a realistic example input that you invent. Return only the finished deliverable — no preamble, no explanation, and do not look for files or tools.\n\nTask: Turn ONE target company into the full five-role buying committee (Champion, Economic Buyer, Technical Buyer, User, Blocker), enriched with verified contacts, persona-tuned messages, a Notion committee map, and a five-thread DRAFT lemlist campaign.",
-      "category": "your-skill"
+      ]
     },
     {
-      "taskId": "your-skill-icp-import",
-      "prompt": "Complete the following task once, on a realistic example input that you invent. Return only the finished deliverable — no preamble, no explanation, and do not look for files or tools.\n\nTask: Translate a client's Notion ICP doc into YALC framework files for a tenant. Reads the Notion page (any structure), maps content flexibly into the 9 canonical YALC sections (framework.yaml, icp/segments.yaml, qualification_rules.md, voice/, positioning/, search_queries.txt, campaign_templates.yaml, company_context.yaml), parks unmappable content in notes.md, and lands everything in _preview/ for review and commit.",
-      "category": "your-skill",
-      "error": "runner: \"kimi\" produced no output (exit -1). Is the kimi CLI installed (~/.kimi-code/bin) and logged in? stderr: • User wants me to complete a task once, on a realistic example input that I invent. Return only the finished deliverable — no preamble, no explanation, and do not look for files or tools.\n\n  So I should not use tools, not look for files. I need to invent a realistic Notion ICP doc content, then tra"
-    },
-    {
-      "taskId": "your-skill-personalize-message",
-      "quality": {
-        "winner": "fable",
-        "scoreFable": 9,
-        "scoreKimi": 7,
-        "rationale": "Both are well-crafted, on-template messages, but B integrates signals more tightly, adds a smarter region-context insight and a lower-friction opt-out ask, while A is strong yet slightly more generic."
-      },
-      "latency": {
-        "fable": 15616,
-        "kimi": 36046.542167
-      },
-      "cost": {
-        "fable": {
-          "value": 0.162137,
-          "estimated": false
-        },
-        "kimi": {
-          "value": 0.002951,
-          "estimated": true
-        }
-      },
-      "outcome": {
-        "fable": "na",
-        "kimi": "na"
-      },
-      "verbosity": {
-        "fable": {
-          "chars": 1013,
-          "words": 171
-        },
-        "kimi": {
-          "chars": 1405,
-          "words": 212
-        }
-      },
-      "prompt": "Complete the following task once, on a realistic example input that you invent. Return only the finished deliverable — no preamble, no explanation, and do not look for files or tools.\n\nTask: Generate a personalized outbound message (LinkedIn DM or cold email) for a single prospect by combining a template with the lead's profile, company, and recent signals.",
-      "category": "your-skill"
-    },
-    {
-      "taskId": "your-skill-research-prospect",
-      "quality": {
-        "winner": "fable",
-        "scoreFable": 9,
-        "scoreKimi": 6,
-        "rationale": "Answer A presents unverifiable specific real-company data as if scraped when it was instructed to invent an example, risking fabricated claims about a real prospect, whereas B invents a fictional prospect (appropriate for the invent-an-input task), delivers a richer brief with intent signals, sourcing notes, and a transparent fiction disclaimer."
-      },
-      "latency": {
-        "fable": 35366,
-        "kimi": 80028.574083
-      },
-      "cost": {
-        "fable": {
-          "value": 0.23189700000000002,
-          "estimated": false
-        },
-        "kimi": {
-          "value": 0.008000499999999999,
-          "estimated": true
-        }
-      },
-      "outcome": {
-        "fable": "na",
-        "kimi": "na"
-      },
-      "verbosity": {
-        "fable": {
-          "chars": 3961,
-          "words": 597
-        },
-        "kimi": {
-          "chars": 3930,
-          "words": 475
-        }
-      },
-      "prompt": "Complete the following task once, on a realistic example input that you invent. Return only the finished deliverable — no preamble, no explanation, and do not look for files or tools.\n\nTask: Run ad-hoc web research on a prospect (company URL or person) — Firecrawl scrapes the marketing site, key pages (pricing, careers, blog), and surfaces a brief. Read-only.",
-      "category": "your-skill"
-    },
-    {
-      "taskId": "your-skill-run-competitive-intel",
-      "quality": {
-        "winner": "fable",
-        "scoreFable": 9,
-        "scoreKimi": 6,
-        "rationale": "Both are strong competitive briefs, but B follows the task more faithfully by simulating the actual CLI invocation/output, dating every data point, and grounding changes/customer-stories in specific recent signals, whereas A omits the CLI framing and uses vaguer, undated intel."
-      },
-      "latency": {
-        "fable": 34545,
-        "kimi": 115820.284833
-      },
-      "cost": {
-        "fable": {
-          "value": 0.233417,
-          "estimated": false
-        },
-        "kimi": {
-          "value": 0.008794999999999999,
-          "estimated": true
-        }
-      },
-      "outcome": {
-        "fable": "na",
-        "kimi": "na"
-      },
-      "verbosity": {
-        "fable": {
-          "chars": 4224,
-          "words": 597
-        },
-        "kimi": {
-          "chars": 4334,
-          "words": 615
-        }
-      },
-      "prompt": "Complete the following task once, on a realistic example input that you invent. Return only the finished deliverable — no preamble, no explanation, and do not look for files or tools.\n\nTask: Pull competitive intelligence on a competitor — pricing, positioning, recent changes, customer stories — via the competitive-intel CLI.",
-      "category": "your-skill"
-    },
-    {
-      "taskId": "code-merge-intervals",
-      "quality": {
-        "winner": "tie",
-        "scoreFable": 8,
-        "scoreKimi": 8,
-        "rationale": "Both implement the correct sort-then-merge algorithm identically in behavior; A adds docstrings while B is more concise, but the prompt asked for only code in a fenced block, so neither is clearly superior."
-      },
-      "latency": {
-        "fable": 4903,
-        "kimi": 24627.03375
-      },
-      "cost": {
-        "fable": {
-          "value": 0.140227,
-          "estimated": false
-        },
-        "kimi": {
-          "value": 0.0016439999999999998,
-          "estimated": true
-        }
-      },
-      "outcome": {
-        "fable": "pass",
-        "kimi": "pass"
-      },
-      "verbosity": {
-        "fable": {
-          "chars": 369,
-          "words": 36
-        },
-        "kimi": {
-          "chars": 791,
-          "words": 81
-        }
-      },
-      "prompt": "Write a Python function merge_intervals(intervals) that merges overlapping intervals and returns them sorted by start. Return only the code in a fenced block.",
-      "category": "coding"
-    },
-    {
-      "taskId": "code-bugfix-factorial",
-      "quality": {
-        "winner": "fable",
-        "scoreFable": 9,
-        "scoreKimi": 8,
-        "rationale": "Both fix the bug correctly, but B has clean indentation and a correct explanation while A's code carries spurious leading indentation that would make it invalid as pasted."
-      },
-      "latency": {
-        "fable": 5728,
-        "kimi": 6265.652459
-      },
-      "cost": {
-        "fable": {
-          "value": 0.142947,
-          "estimated": false
-        },
-        "kimi": {
-          "value": 0.000319,
-          "estimated": true
-        }
-      },
-      "outcome": {
-        "fable": "pass",
-        "kimi": "pass"
-      },
-      "verbosity": {
-        "fable": {
-          "chars": 228,
-          "words": 42
-        },
-        "kimi": {
-          "chars": 126,
-          "words": 19
-        }
-      },
-      "prompt": "This Python function has a bug. Return only the corrected code:\n\ndef factorial(n):\n    result = 0\n    for i in range(1, n + 1):\n        result *= i\n    return result",
-      "category": "coding"
-    },
-    {
-      "taskId": "reasoning-trains",
-      "quality": {
-        "winner": "tie",
-        "scoreFable": 10,
-        "scoreKimi": 10,
-        "rationale": "Both give the correct answer (10:30) in the requested HH:MM format, since the first train has a 30 km head start closed at 30 km/h relative speed in exactly one hour."
-      },
-      "latency": {
-        "fable": 2864,
-        "kimi": 9363.632333
-      },
-      "cost": {
-        "fable": {
-          "value": 0.129697,
-          "estimated": false
-        },
-        "kimi": {
-          "value": 0.000103,
-          "estimated": true
-        }
-      },
-      "outcome": {
-        "fable": "pass",
-        "kimi": "pass"
-      },
-      "verbosity": {
-        "fable": {
-          "chars": 5,
-          "words": 1
-        },
-        "kimi": {
-          "chars": 5,
-          "words": 1
-        }
-      },
-      "prompt": "A train leaves a station at 9:00 going 60 km/h. A second train leaves the same station at 9:30 on the same track, same direction, going 90 km/h. At what clock time does the second catch the first? Answer with only the time in HH:MM.",
-      "category": "reasoning"
-    },
-    {
-      "taskId": "sql-top-customers",
-      "prompt": "Tables: users(id, signup_date), orders(id, user_id, amount, created_at). Write a SQL query returning the top 5 users by total order amount for orders created in 2025. Return only the SQL.",
+      "id": "code-fizzbuzz",
       "category": "coding",
-      "error": "Invalid regular expression: /(?i)select/: Invalid group"
+      "flip_rate": 1,
+      "pass_at_k": 1,
+      "pass_hat_k": 1,
+      "trials": [
+        {
+          "model": "claude-fable-5",
+          "trial": 0,
+          "latencyMs": 27,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "claude-fable-5",
+          "trial": 1,
+          "latencyMs": 26,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 0,
+          "latencyMs": 28,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 1,
+          "latencyMs": 26,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        }
+      ]
     },
     {
-      "taskId": "regex-us-phone",
-      "quality": {
-        "winner": "kimi",
-        "scoreFable": 8,
-        "scoreKimi": 10,
-        "rationale": "Both regexes are identical and correct, but the task said return only the regex and B wrapped it in backticks whereas A returned it cleanly."
-      },
-      "latency": {
-        "fable": 2494,
-        "kimi": 23508.284
-      },
-      "cost": {
-        "fable": {
-          "value": 0.130627,
-          "estimated": false
+      "id": "reason-parity",
+      "category": "reasoning",
+      "flip_rate": 1,
+      "pass_at_k": 0,
+      "pass_hat_k": 0,
+      "trials": [
+        {
+          "model": "claude-fable-5",
+          "trial": 0,
+          "latencyMs": 34,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "fail",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
         },
-        "kimi": {
-          "value": 0.00009750000000000001,
-          "estimated": true
-        }
-      },
-      "outcome": {
-        "fable": "pass",
-        "kimi": "pass"
-      },
-      "verbosity": {
-        "fable": {
-          "chars": 25,
-          "words": 2
+        {
+          "model": "claude-fable-5",
+          "trial": 1,
+          "latencyMs": 27,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "fail",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
         },
-        "kimi": {
-          "chars": 23,
-          "words": 2
+        {
+          "model": "kimi-k3",
+          "trial": 0,
+          "latencyMs": 29,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "fail",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 1,
+          "latencyMs": 26,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "fail",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
         }
-      },
-      "prompt": "Write a single PCRE regex that matches a US phone number in exactly the format (123) 456-7890. Return only the regex, nothing else.",
-      "category": "coding"
+      ]
     },
     {
-      "taskId": "json-strict-company",
-      "quality": {
-        "winner": "kimi",
-        "scoreFable": 8,
-        "scoreKimi": 9,
-        "rationale": "Both are valid minified JSON matching the schema exactly, but B's more specific, differentiated tags better capture a plausible B2B SaaS identity than A's generic ones."
-      },
-      "latency": {
-        "fable": 3878,
-        "kimi": 5211.377792
-      },
-      "cost": {
-        "fable": {
-          "value": 0.130887,
-          "estimated": false
+      "id": "write-subject",
+      "category": "writing",
+      "flip_rate": 1,
+      "pass_at_k": 1,
+      "pass_hat_k": 1,
+      "trials": [
+        {
+          "model": "claude-fable-5",
+          "trial": 0,
+          "latencyMs": 30,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
         },
-        "kimi": {
-          "value": 0.0002645,
-          "estimated": true
-        }
-      },
-      "outcome": {
-        "fable": "pass",
-        "kimi": "pass"
-      },
-      "verbosity": {
-        "fable": {
-          "chars": 80,
-          "words": 1
+        {
+          "model": "claude-fable-5",
+          "trial": 1,
+          "latencyMs": 28,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
         },
-        "kimi": {
-          "chars": 100,
-          "words": 1
+        {
+          "model": "kimi-k3",
+          "trial": 0,
+          "latencyMs": 37,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 1,
+          "latencyMs": 29,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
         }
-      },
-      "prompt": "Return ONLY minified JSON (no prose, no code fence) with keys: name (string), founded (integer year), tags (array of 3 strings), describing a fictional B2B SaaS company.",
-      "category": "extraction"
+      ]
+    },
+    {
+      "id": "research-brief",
+      "category": "research",
+      "flip_rate": 1,
+      "pass_at_k": 1,
+      "pass_hat_k": 1,
+      "trials": [
+        {
+          "model": "claude-fable-5",
+          "trial": 0,
+          "latencyMs": 27,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "claude-fable-5",
+          "trial": 1,
+          "latencyMs": 33,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 0,
+          "latencyMs": 27,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 1,
+          "latencyMs": 27,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        }
+      ]
+    },
+    {
+      "id": "tool-plan",
+      "category": "tool-use",
+      "flip_rate": 1,
+      "pass_at_k": 1,
+      "pass_hat_k": 1,
+      "trials": [
+        {
+          "model": "claude-fable-5",
+          "trial": 0,
+          "latencyMs": 26,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "claude-fable-5",
+          "trial": 1,
+          "latencyMs": 26,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 0,
+          "latencyMs": 27,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 1,
+          "latencyMs": 28,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        }
+      ]
     }
-  ]
+  ],
+  "tasks_full": [
+    {
+      "id": "extract-year",
+      "category": "extraction",
+      "trials": [
+        {
+          "model": "claude-fable-5",
+          "trial": 0,
+          "latencyMs": 28,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "claude-fable-5",
+          "trial": 1,
+          "latencyMs": 35,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 0,
+          "latencyMs": 26,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 1,
+          "latencyMs": 29,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        }
+      ],
+      "verdicts": [
+        {
+          "index": 0,
+          "winner": "tie",
+          "agreement": false,
+          "position_consistent": false,
+          "per_family": [
+            {
+              "family": "claude",
+              "winner": "tie",
+              "position_consistent": false
+            },
+            {
+              "family": "kimi",
+              "winner": "tie",
+              "position_consistent": false
+            }
+          ],
+          "overall": {
+            "claude-fable-5": 4,
+            "kimi-k3": 4
+          },
+          "judged": true
+        },
+        {
+          "index": 1,
+          "winner": "tie",
+          "agreement": false,
+          "position_consistent": false,
+          "per_family": [
+            {
+              "family": "claude",
+              "winner": "tie",
+              "position_consistent": false
+            },
+            {
+              "family": "kimi",
+              "winner": "tie",
+              "position_consistent": false
+            }
+          ],
+          "overall": {
+            "claude-fable-5": 4,
+            "kimi-k3": 4
+          },
+          "judged": true
+        }
+      ],
+      "pass_at_k": {
+        "claude-fable-5": 1,
+        "kimi-k3": 1
+      },
+      "pass_hat_k": {
+        "claude-fable-5": 1,
+        "kimi-k3": 1
+      },
+      "error_rate": {
+        "claude-fable-5": 0,
+        "kimi-k3": 0
+      },
+      "flip_rate": 1,
+      "avg_length": {
+        "claude-fable-5": 111,
+        "kimi-k3": 108
+      },
+      "latency_median_ms": {
+        "claude-fable-5": 31.5,
+        "kimi-k3": 27.5
+      }
+    },
+    {
+      "id": "code-fizzbuzz",
+      "category": "coding",
+      "trials": [
+        {
+          "model": "claude-fable-5",
+          "trial": 0,
+          "latencyMs": 27,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "claude-fable-5",
+          "trial": 1,
+          "latencyMs": 26,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 0,
+          "latencyMs": 28,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 1,
+          "latencyMs": 26,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        }
+      ],
+      "verdicts": [
+        {
+          "index": 0,
+          "winner": "tie",
+          "agreement": false,
+          "position_consistent": false,
+          "per_family": [
+            {
+              "family": "claude",
+              "winner": "tie",
+              "position_consistent": false
+            },
+            {
+              "family": "kimi",
+              "winner": "tie",
+              "position_consistent": false
+            }
+          ],
+          "overall": {
+            "claude-fable-5": 4,
+            "kimi-k3": 4
+          },
+          "judged": true
+        },
+        {
+          "index": 1,
+          "winner": "tie",
+          "agreement": false,
+          "position_consistent": false,
+          "per_family": [
+            {
+              "family": "claude",
+              "winner": "tie",
+              "position_consistent": false
+            },
+            {
+              "family": "kimi",
+              "winner": "tie",
+              "position_consistent": false
+            }
+          ],
+          "overall": {
+            "claude-fable-5": 4,
+            "kimi-k3": 4
+          },
+          "judged": true
+        }
+      ],
+      "pass_at_k": {
+        "claude-fable-5": 1,
+        "kimi-k3": 1
+      },
+      "pass_hat_k": {
+        "claude-fable-5": 1,
+        "kimi-k3": 1
+      },
+      "error_rate": {
+        "claude-fable-5": 0,
+        "kimi-k3": 0
+      },
+      "flip_rate": 1,
+      "avg_length": {
+        "claude-fable-5": 111,
+        "kimi-k3": 108
+      },
+      "latency_median_ms": {
+        "claude-fable-5": 26.5,
+        "kimi-k3": 27
+      }
+    },
+    {
+      "id": "reason-parity",
+      "category": "reasoning",
+      "trials": [
+        {
+          "model": "claude-fable-5",
+          "trial": 0,
+          "latencyMs": 34,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "fail",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "claude-fable-5",
+          "trial": 1,
+          "latencyMs": 27,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "fail",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 0,
+          "latencyMs": 29,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "fail",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 1,
+          "latencyMs": 26,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "fail",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        }
+      ],
+      "verdicts": [
+        {
+          "index": 0,
+          "winner": "tie",
+          "agreement": false,
+          "position_consistent": false,
+          "per_family": [
+            {
+              "family": "claude",
+              "winner": "tie",
+              "position_consistent": false
+            },
+            {
+              "family": "kimi",
+              "winner": "tie",
+              "position_consistent": false
+            }
+          ],
+          "overall": {
+            "claude-fable-5": 4,
+            "kimi-k3": 4
+          },
+          "judged": true
+        },
+        {
+          "index": 1,
+          "winner": "tie",
+          "agreement": false,
+          "position_consistent": false,
+          "per_family": [
+            {
+              "family": "claude",
+              "winner": "tie",
+              "position_consistent": false
+            },
+            {
+              "family": "kimi",
+              "winner": "tie",
+              "position_consistent": false
+            }
+          ],
+          "overall": {
+            "claude-fable-5": 4,
+            "kimi-k3": 4
+          },
+          "judged": true
+        }
+      ],
+      "pass_at_k": {
+        "claude-fable-5": 0,
+        "kimi-k3": 0
+      },
+      "pass_hat_k": {
+        "claude-fable-5": 0,
+        "kimi-k3": 0
+      },
+      "error_rate": {
+        "claude-fable-5": 0,
+        "kimi-k3": 0
+      },
+      "flip_rate": 1,
+      "avg_length": {
+        "claude-fable-5": 111,
+        "kimi-k3": 108
+      },
+      "latency_median_ms": {
+        "claude-fable-5": 30.5,
+        "kimi-k3": 27.5
+      }
+    },
+    {
+      "id": "write-subject",
+      "category": "writing",
+      "trials": [
+        {
+          "model": "claude-fable-5",
+          "trial": 0,
+          "latencyMs": 30,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "claude-fable-5",
+          "trial": 1,
+          "latencyMs": 28,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 0,
+          "latencyMs": 37,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 1,
+          "latencyMs": 29,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        }
+      ],
+      "verdicts": [
+        {
+          "index": 0,
+          "winner": "tie",
+          "agreement": false,
+          "position_consistent": false,
+          "per_family": [
+            {
+              "family": "claude",
+              "winner": "tie",
+              "position_consistent": false
+            },
+            {
+              "family": "kimi",
+              "winner": "tie",
+              "position_consistent": false
+            }
+          ],
+          "overall": {
+            "claude-fable-5": 4,
+            "kimi-k3": 4
+          },
+          "judged": true
+        },
+        {
+          "index": 1,
+          "winner": "tie",
+          "agreement": false,
+          "position_consistent": false,
+          "per_family": [
+            {
+              "family": "claude",
+              "winner": "tie",
+              "position_consistent": false
+            },
+            {
+              "family": "kimi",
+              "winner": "tie",
+              "position_consistent": false
+            }
+          ],
+          "overall": {
+            "claude-fable-5": 4,
+            "kimi-k3": 4
+          },
+          "judged": true
+        }
+      ],
+      "pass_at_k": {
+        "claude-fable-5": 1,
+        "kimi-k3": 1
+      },
+      "pass_hat_k": {
+        "claude-fable-5": 1,
+        "kimi-k3": 1
+      },
+      "error_rate": {
+        "claude-fable-5": 0,
+        "kimi-k3": 0
+      },
+      "flip_rate": 1,
+      "avg_length": {
+        "claude-fable-5": 111,
+        "kimi-k3": 108
+      },
+      "latency_median_ms": {
+        "claude-fable-5": 29,
+        "kimi-k3": 33
+      }
+    },
+    {
+      "id": "research-brief",
+      "category": "research",
+      "trials": [
+        {
+          "model": "claude-fable-5",
+          "trial": 0,
+          "latencyMs": 27,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "claude-fable-5",
+          "trial": 1,
+          "latencyMs": 33,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 0,
+          "latencyMs": 27,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 1,
+          "latencyMs": 27,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        }
+      ],
+      "verdicts": [
+        {
+          "index": 0,
+          "winner": "tie",
+          "agreement": false,
+          "position_consistent": false,
+          "per_family": [
+            {
+              "family": "claude",
+              "winner": "tie",
+              "position_consistent": false
+            },
+            {
+              "family": "kimi",
+              "winner": "tie",
+              "position_consistent": false
+            }
+          ],
+          "overall": {
+            "claude-fable-5": 4,
+            "kimi-k3": 4
+          },
+          "judged": true
+        },
+        {
+          "index": 1,
+          "winner": "tie",
+          "agreement": false,
+          "position_consistent": false,
+          "per_family": [
+            {
+              "family": "claude",
+              "winner": "tie",
+              "position_consistent": false
+            },
+            {
+              "family": "kimi",
+              "winner": "tie",
+              "position_consistent": false
+            }
+          ],
+          "overall": {
+            "claude-fable-5": 4,
+            "kimi-k3": 4
+          },
+          "judged": true
+        }
+      ],
+      "pass_at_k": {
+        "claude-fable-5": 1,
+        "kimi-k3": 1
+      },
+      "pass_hat_k": {
+        "claude-fable-5": 1,
+        "kimi-k3": 1
+      },
+      "error_rate": {
+        "claude-fable-5": 0,
+        "kimi-k3": 0
+      },
+      "flip_rate": 1,
+      "avg_length": {
+        "claude-fable-5": 111,
+        "kimi-k3": 108
+      },
+      "latency_median_ms": {
+        "claude-fable-5": 30,
+        "kimi-k3": 27
+      }
+    },
+    {
+      "id": "tool-plan",
+      "category": "tool-use",
+      "trials": [
+        {
+          "model": "claude-fable-5",
+          "trial": 0,
+          "latencyMs": 26,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "claude-fable-5",
+          "trial": 1,
+          "latencyMs": 26,
+          "tokens": 12,
+          "inputTokens": 8,
+          "outputTokens": 4,
+          "turns": 1,
+          "outcome": "pass",
+          "output": "Founded 2011. def fizzbuzz(n) returns the list for 1..n. The number is even. Use wc -l file.txt to count lines.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 0,
+          "latencyMs": 27,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        },
+        {
+          "model": "kimi-k3",
+          "trial": 1,
+          "latencyMs": 28,
+          "tokens": null,
+          "inputTokens": null,
+          "outputTokens": null,
+          "turns": null,
+          "outcome": "pass",
+          "output": "Founded in 2011. def fizzbuzz(n) builds a list over 1..n. It is even. Run wc -l file.txt for the line count.",
+          "error": null
+        }
+      ],
+      "verdicts": [
+        {
+          "index": 0,
+          "winner": "tie",
+          "agreement": false,
+          "position_consistent": false,
+          "per_family": [
+            {
+              "family": "claude",
+              "winner": "tie",
+              "position_consistent": false
+            },
+            {
+              "family": "kimi",
+              "winner": "tie",
+              "position_consistent": false
+            }
+          ],
+          "overall": {
+            "claude-fable-5": 4,
+            "kimi-k3": 4
+          },
+          "judged": true
+        },
+        {
+          "index": 1,
+          "winner": "tie",
+          "agreement": false,
+          "position_consistent": false,
+          "per_family": [
+            {
+              "family": "claude",
+              "winner": "tie",
+              "position_consistent": false
+            },
+            {
+              "family": "kimi",
+              "winner": "tie",
+              "position_consistent": false
+            }
+          ],
+          "overall": {
+            "claude-fable-5": 4,
+            "kimi-k3": 4
+          },
+          "judged": true
+        }
+      ],
+      "pass_at_k": {
+        "claude-fable-5": 1,
+        "kimi-k3": 1
+      },
+      "pass_hat_k": {
+        "claude-fable-5": 1,
+        "kimi-k3": 1
+      },
+      "error_rate": {
+        "claude-fable-5": 0,
+        "kimi-k3": 0
+      },
+      "flip_rate": 1,
+      "avg_length": {
+        "claude-fable-5": 111,
+        "kimi-k3": 108
+      },
+      "latency_median_ms": {
+        "claude-fable-5": 26,
+        "kimi-k3": 27.5
+      }
+    }
+  ],
+  "routing": {
+    "version": "2026-07-23",
+    "source_run": "20260723123023-1234",
+    "default_model": "claude-fable-5",
+    "rules": [
+      {
+        "category": "extraction",
+        "route_to": "claude-fable-5",
+        "confidence": "insufficient-evidence",
+        "evidence": {
+          "win_rate": 0.5,
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "n_tasks": 1,
+          "trials": 2,
+          "pass_hat_k": {
+            "claude-fable-5": 1,
+            "kimi-k3": 1
+          }
+        },
+        "cost_per_solved_usd": {
+          "claude-fable-5": 0.0002016,
+          "kimi-k3": 0.00016199999999999998,
+          "basis": "kimi estimated"
+        },
+        "fallback": "claude-fable-5"
+      },
+      {
+        "category": "coding",
+        "route_to": "claude-fable-5",
+        "confidence": "insufficient-evidence",
+        "evidence": {
+          "win_rate": 0.5,
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "n_tasks": 1,
+          "trials": 2,
+          "pass_hat_k": {
+            "claude-fable-5": 1,
+            "kimi-k3": 1
+          }
+        },
+        "cost_per_solved_usd": {
+          "claude-fable-5": 0.0002016,
+          "kimi-k3": 0.00016199999999999998,
+          "basis": "kimi estimated"
+        },
+        "fallback": "claude-fable-5"
+      },
+      {
+        "category": "reasoning",
+        "route_to": "claude-fable-5",
+        "confidence": "insufficient-evidence",
+        "evidence": {
+          "win_rate": 0.5,
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "n_tasks": 1,
+          "trials": 2,
+          "pass_hat_k": {
+            "claude-fable-5": 0,
+            "kimi-k3": 0
+          }
+        },
+        "cost_per_solved_usd": {
+          "claude-fable-5": 0.0002016,
+          "kimi-k3": 0.00016199999999999998,
+          "basis": "kimi estimated"
+        },
+        "fallback": "claude-fable-5"
+      },
+      {
+        "category": "writing",
+        "route_to": "claude-fable-5",
+        "confidence": "insufficient-evidence",
+        "evidence": {
+          "win_rate": 0.5,
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "n_tasks": 1,
+          "trials": 2,
+          "pass_hat_k": {
+            "claude-fable-5": 1,
+            "kimi-k3": 1
+          }
+        },
+        "cost_per_solved_usd": {
+          "claude-fable-5": 0.0002016,
+          "kimi-k3": 0.00016199999999999998,
+          "basis": "kimi estimated"
+        },
+        "fallback": "claude-fable-5"
+      },
+      {
+        "category": "research",
+        "route_to": "claude-fable-5",
+        "confidence": "insufficient-evidence",
+        "evidence": {
+          "win_rate": 0.5,
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "n_tasks": 1,
+          "trials": 2,
+          "pass_hat_k": {
+            "claude-fable-5": 1,
+            "kimi-k3": 1
+          }
+        },
+        "cost_per_solved_usd": {
+          "claude-fable-5": 0.0002016,
+          "kimi-k3": 0.00016199999999999998,
+          "basis": "kimi estimated"
+        },
+        "fallback": "claude-fable-5"
+      },
+      {
+        "category": "tool-use",
+        "route_to": "claude-fable-5",
+        "confidence": "insufficient-evidence",
+        "evidence": {
+          "win_rate": 0.5,
+          "ci95": [
+            0.5,
+            0.5
+          ],
+          "n_tasks": 1,
+          "trials": 2,
+          "pass_hat_k": {
+            "claude-fable-5": 1,
+            "kimi-k3": 1
+          }
+        },
+        "cost_per_solved_usd": {
+          "claude-fable-5": 0.0002016,
+          "kimi-k3": 0.00016199999999999998,
+          "basis": "kimi estimated"
+        },
+        "fallback": "claude-fable-5"
+      }
+    ]
+  }
 }
