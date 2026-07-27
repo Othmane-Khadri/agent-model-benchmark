@@ -1,0 +1,127 @@
+{
+  "version": "2026-07-24",
+  "source_run": "20260724140717-1234",
+  "default_model": "claude-fable-5",
+  "rules": [
+    {
+      "category": "writing",
+      "route_to": "claude-fable-5",
+      "confidence": "high",
+      "evidence": {
+        "win_rate": 0.8333333333333333,
+        "ci95": [
+          0.6666666666666666,
+          1
+        ],
+        "n_tasks": 2,
+        "trials": 3,
+        "pass_hat_k": {
+          "claude-fable-5": 0,
+          "kimi-k3": 0
+        }
+      },
+      "cost_per_solved_usd": {
+        "claude-fable-5": 0.5336999999999997,
+        "kimi-k3": 0.010472374999999996,
+        "basis": "kimi estimated"
+      },
+      "fallback": "claude-fable-5"
+    },
+    {
+      "category": "extraction",
+      "route_to": "claude-fable-5",
+      "confidence": "insufficient-evidence",
+      "evidence": {
+        "win_rate": 0.75,
+        "ci95": [
+          0.5,
+          1
+        ],
+        "n_tasks": 2,
+        "trials": 3,
+        "pass_hat_k": {
+          "claude-fable-5": 0.5,
+          "kimi-k3": 0.5
+        }
+      },
+      "cost_per_solved_usd": {
+        "claude-fable-5": 0.5336999999999997,
+        "kimi-k3": 0.010472374999999996,
+        "basis": "kimi estimated"
+      },
+      "fallback": "claude-fable-5"
+    },
+    {
+      "category": "research",
+      "route_to": "claude-fable-5",
+      "confidence": "high",
+      "evidence": {
+        "win_rate": 0.8333333333333333,
+        "ci95": [
+          0.6666666666666666,
+          1
+        ],
+        "n_tasks": 2,
+        "trials": 3,
+        "pass_hat_k": {
+          "claude-fable-5": 0,
+          "kimi-k3": 0
+        }
+      },
+      "cost_per_solved_usd": {
+        "claude-fable-5": 0.5336999999999997,
+        "kimi-k3": 0.010472374999999996,
+        "basis": "kimi estimated"
+      },
+      "fallback": "claude-fable-5"
+    },
+    {
+      "category": "coding",
+      "route_to": "claude-fable-5",
+      "confidence": "insufficient-evidence",
+      "evidence": {
+        "win_rate": 0.625,
+        "ci95": [
+          0.5,
+          0.7500000000000001
+        ],
+        "n_tasks": 4,
+        "trials": 3,
+        "pass_hat_k": {
+          "claude-fable-5": 0.75,
+          "kimi-k3": 0.75
+        }
+      },
+      "cost_per_solved_usd": {
+        "claude-fable-5": 0.5336999999999997,
+        "kimi-k3": 0.010472374999999996,
+        "basis": "kimi estimated"
+      },
+      "fallback": "claude-fable-5"
+    },
+    {
+      "category": "reasoning",
+      "route_to": "claude-fable-5",
+      "confidence": "insufficient-evidence",
+      "evidence": {
+        "win_rate": 0.5,
+        "ci95": [
+          0.5,
+          0.5
+        ],
+        "n_tasks": 1,
+        "trials": 3,
+        "pass_hat_k": {
+          "claude-fable-5": 1,
+          "kimi-k3": 1
+        }
+      },
+      "cost_per_solved_usd": {
+        "claude-fable-5": 0.5336999999999997,
+        "kimi-k3": 0.010472374999999996,
+        "basis": "kimi estimated"
+      },
+      "fallback": "claude-fable-5"
+    }
+  ]
+}

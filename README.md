@@ -90,6 +90,18 @@ Top level:
 
 ## Sample
 
-`examples/sample-results.json` and `examples/sample-results.html` are an illustrative snapshot generated with the bundled deterministic mock CLIs (no live API calls), using the 6-category `config/tasks/sample.json` task set — so you can see the exact output shape without running anything.
+### A real run (Kimi K3 vs Claude Fable 5, 11 tasks, dual judges)
 
-It is a **shape demo, not a performance claim.** On this tiny 6-task set the two judge families disagree, so the tool does the honest thing: it prints `TIE — no statistically meaningful winner` and routes every category to the default with `confidence: "insufficient-evidence"`. Point it at the real `claude` / `kimi` CLIs on a real task set for an actual verdict.
+`examples/real-run-results.html` / `.json` is the output of an actual run against the live `claude` and `kimi` CLIs: 11 tasks (5 real Claude Code skills + 6 coding/reasoning probes), 3 trials each, judged by both Opus and K3 in both orders. `examples/real-run-model-routing.json` and `real-run-routing-snippet.md` are the routing policy it emitted.
+
+What it found, and why it is worth reading before you trust any single-judge benchmark:
+
+- **Correctness parity.** On all 5 tasks with objective checks (regex, strict JSON, merge-intervals, bug-fix, train-reasoning), both models passed every trial (`pass^k = 1`).
+- **The two judge families agreed only 48% of the time.** A Claude judge and a Kimi judge disagree on the winner more than half the time. Any single-judge benchmark is coin-flipping half its verdicts.
+- **Position bias was severe** — on some tasks the verdict flipped 100% of the time when the answer order was swapped. Single-order judging would have declared confident winners on pure slot noise.
+- **Fable 5 has a real but modest quality edge** (win rate 71%, 95% CI excludes a tie, and it is *not* a length artifact), but **no single task had a clean consensus winner** once both families had to agree across both orders.
+- **The routing policy routed nothing to Kimi** — every category came back `insufficient-evidence`. An explicit "not enough evidence to switch" beats a confident-but-noisy rule.
+
+### Shape demo (no API calls)
+
+`examples/sample-results.json` / `.html` is a reproducible snapshot from the bundled deterministic mock CLIs using `config/tasks/sample.json` — a **shape demo, not a performance claim**, so you can see the exact output format without running anything.
